@@ -1,14 +1,10 @@
-# makeCacheMatrix: return a list of functions to:
-# 1. Set the value of the matrix
-# 2. Get the value of the matrix
-# 3. Set the value of the inverse
-# 4. Get the value of the inverse
+# makeCacheMatrix: return a list of functions to get/set values for matrix and inverse
 
 makeCacheMatrix <- function(x = matrix()) {
     # inv will store the cached inverse matrix
     inv <- NULL
     
-    # Get and Set functions for the 
+    # Get and Set functions for the matrix
     set <- function(y) {
         x <<- y
         inv <<- NULL
@@ -28,12 +24,10 @@ makeCacheMatrix <- function(x = matrix()) {
 # If the inverse is already calculated before, it returns the cached inverse.
 cacheSolve <- function(x, ...) {
     
-    #    
     inv <- x$getinv()
     if (!is.null(inv)) {
         return(inv)
     }
-    
     
     data <- x$get()
     inv <- solve(data, ...)
